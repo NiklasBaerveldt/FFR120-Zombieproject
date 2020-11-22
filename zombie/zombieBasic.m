@@ -1,6 +1,6 @@
 %% physical parameters (input)
 z0 = 1;
-h0 = 20;
+h0 = 10;
 
 zSpeed = 7;
 hSpeed = 5;
