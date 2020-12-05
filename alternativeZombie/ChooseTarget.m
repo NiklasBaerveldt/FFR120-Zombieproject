@@ -39,8 +39,10 @@ function [target] = ChooseTarget(zombie,humans,obstacle,sightRadius)
       end
     end
   end
+  target = closestHumans(1,:);
   else
   target = [randi([0 50],1) randi([0 50],1)];
   end
+  
 end
 
