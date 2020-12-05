@@ -1,6 +1,6 @@
 function [target] = ChooseTarget(zombie,humans,obstacle,sightRadius)
 
-  closestHumans = FindClosestHuman(zombie,humans,sightRadius);
+  closestHumans = FindClosestHuman(zombie,humans,sigh);
   %{
   closestHumansInSight = [0 0];
   for k = 1:size(closestHumans,1)
@@ -15,7 +15,6 @@ function [target] = ChooseTarget(zombie,humans,obstacle,sightRadius)
     for i = 1:size(closestHumansInSight,1)
       for j = 1:size(obstacle,1)
   %}
-  if(size(closestHumans,1) > 0)
   for i = 1:size(closestHumans,1)
     for j = 1:size(obstacle,1)
       if DistanceBetweenPoints(closestHumans(i,:),zombie)<=sightRadius   
@@ -39,8 +38,6 @@ function [target] = ChooseTarget(zombie,humans,obstacle,sightRadius)
       end
     end
   end
-  else
-  target = [randi([0 50],1) randi([0 50],1)];
-  end
+  
 end
 

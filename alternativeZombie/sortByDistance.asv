@@ -1,0 +1,13 @@
+function [outputArg1,outputArg2] = sortByDistance(point2D,vectorToSort)
+%A = input('Enter numbers between [ ] separated by comma, i.e. [1,2,3,4]: ');
+
+n = length(vectorToSort);
+for i=1:n-1
+[x index] = minDista(A(i:n)); 
+minIndex = index + i-1; 
+temp = A(i);
+A(i) = A(minIndex);
+A(minIndex) = temp;
+end;
+end
+

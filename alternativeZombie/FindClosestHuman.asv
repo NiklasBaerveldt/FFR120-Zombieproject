@@ -9,7 +9,7 @@ function [closestHumans] = FindClosestHuman(zombie,humans,sightRadius)
       closestHumans(i,:) = humans(i,:);
     end
   end
-  closestHumans = sortByDistance(zombie,closestHumans);
-  %closest = closestHumans(1,:)
+  
+  
 end
 

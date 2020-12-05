@@ -1,6 +1,6 @@
 clc; clear;
 gridSize = 50;
-nrOfHumans = 50;
+nrOfHumans = 10;
 nrOfZombies = 1;
 nrOfObstacles = 20;
 stopTime = 500;
