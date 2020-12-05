@@ -1,20 +1,22 @@
-function [newZombieGrid] = MoveZombies(humanGrid,zombieGrid,obstacleGrid,stepLength)
-newZombieGrid = zombieGrid;
-[humanX, humanY] = find(humanGrid == 1);
-humans = [humanX, humanY];
+function [newZombieGrid] = MoveZombies(humanGrid,zombieGrid,obstacleGrid,stepLength,sightRadius)
 
-[obstacleX, obstacleY] = find(obstacleGrid == 1);
-obstacles = [obstacleX, obstacleY];
+  newZombieGrid = zombieGrid;
+  [humanX, humanY] = find(humanGrid == 1);
+  humans = [humanX, humanY];
 
-[zombieX, zombieY] = find(zombieGrid == 1);
-for i = 1 : length(zombieX)
+  [obstacleX, obstacleY] = find(obstacleGrid == 1);
+  obstacles = [obstacleX, obstacleY];
+
+  [zombieX, zombieY] = find(zombieGrid == 1);
+  for i = 1 : length(zombieX)
     zombie = [zombieX(i),zombieY(i)];
-    obstacle = FindClosestObstacle(zombie,obstacles);
-    target = ChooseTarget(zombie,humans,obstacle);
-    if target==[Inf Inf]
-      break;
-    end
-    newZombieGrid = MoveZombie(newZombieGrid,zombie,target,obstacle,obstacleGrid,stepLength);
-end
+    closestObstacles = FindClosestObstacle(zombie,obstacles);
+    target = ChooseTarget(zombie,humans,closestObstacles,sightRadius);
+    %if target==[Inf Inf]
+    %  break;
+    %end
+    newZombieGrid = MoveZombie(newZombieGrid,zombie,target,closestObstacles,obstacleGrid,stepLength);
+  end
+  
 end
 

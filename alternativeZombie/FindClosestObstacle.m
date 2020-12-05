@@ -1,4 +1,5 @@
 function [closestObstacles] = FindClosestObstacle(zombie,obstacles)
+
   nrOfObstacles = size(obstacles,1);
   shortestDistance = Inf;
   closestObstacles = [];
@@ -9,4 +10,5 @@ function [closestObstacles] = FindClosestObstacle(zombie,obstacles)
       closestObstacles(i,:) = obstacles(i,:);
     end  
   end
+  
 end

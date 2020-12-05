@@ -62,22 +62,28 @@ if target ~= 0 % No human targets available.
   
   
   if obstacleGrid(zombieX,zombieY) == 1
-      
       if obstacleGrid(zX,zombieY) == 1
         zombieY = zY;
-        if obstacleGrid(zombieX+1,zombieY)==1
-          zombieX = zombieX - 1;
+        if obstacleGrid(zX+1,zombieY)==1
+          zombieX = zX - 1;
         else
-          zombieX = zombieX + 1;
+          zombieX = zX + 1;
         end
       elseif obstacleGrid(zombieX,zY) == 1
         zombieX = zX;
-        if obstacleGrid(zombieX,zombieY+1)==1
-          zombieY = zombieY - 1;
+        if obstacleGrid(zombieX,zY+1)==1
+          zombieY = zY - 1;
         else
-          zombieY = zombieY + 1;
+          zombieY = zY + 1;
         end
       else
+        if obstacleGrid(zX+1,zY)==1
+          zombieX = zX;
+          zombieY = zY + randi([-1;1],1);
+        elseif obstacleGrid(zX,zY+1)==1
+          zombieX = zX + randi([-1;1],1);
+          zombieY = zY;
+        end
       end
       newZombieGrid(zombie(1),zombie(2)) = 0;
       newZombieGrid(zombieX,zombieY) = 1;
