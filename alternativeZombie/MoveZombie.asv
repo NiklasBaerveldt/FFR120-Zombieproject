@@ -36,6 +36,9 @@ if target ~= 0 % No human targets available.
         end
         %}
       end
+      if(obstacleGrid(zombieX,zombieY) == 1 || zombieGrid(zombieX,zombieY) == 1)
+          zombieX = zX;
+      end
     %end
   end
 
@@ -58,41 +61,45 @@ if target ~= 0 % No human targets available.
         end
         %}
       end
+      if(obstacleGrid(zombieX,zombieY) == 1)
+          zombieY = zY;
+      end
     %end
   end
+newZombieGrid(zombie(1),zombie(2)) = 0;
+newZombieGrid(zombieX,zombieY) = 1;
   
-  
-  if obstacleGrid(zombieX,zombieY) == 1
-      if obstacleGrid(zX,zombieY) == 1
-        zombieY = zY;
-        if obstacleGrid(zX+1,zombieY)==1
-          zombieX = zX - 1;
-        else
-          zombieX = zX + 1;
-        end
-      elseif obstacleGrid(zombieX,zY) == 1
-        zombieX = zX;
-        if obstacleGrid(zombieX,zY+1)==1
-          zombieY = zY - 1;
-        else
-          zombieY = zY + 1;
-        end
-      else
-        if obstacleGrid(zX+1,zY)==1
-          zombieX = zX;
-          zombieY = zY + randi([-1;1],1);
-        elseif obstacleGrid(zX,zY+1)==1
-          zombieX = zX + randi([-1;1],1);
-          zombieY = zY;
-        end
-      end
-      newZombieGrid(zombie(1),zombie(2)) = 0;
-      newZombieGrid(zombieX,zombieY) = 1;
-      
-  else
-    newZombieGrid(zombie(1),zombie(2)) = 0;
-    newZombieGrid(zombieX,zombieY) = 1;
-  end   
+%   if obstacleGrid(zombieX,zombieY) == 1
+%       if obstacleGrid(zX,zombieY) == 1
+%         zombieY = zY;
+%         if obstacleGrid(zX+1,zombieY)==1
+%           zombieX = zX - 1;
+%         else
+%           zombieX = zX + 1;
+%         end
+%       elseif obstacleGrid(zombieX,zY) == 1
+%         zombieX = zX;
+%         if obstacleGrid(zombieX,zY+1)==1
+%           zombieY = zY - 1;
+%         else
+%           zombieY = zY + 1;
+%         end
+%       else
+%         if obstacleGrid(zX+1,zY)==1
+%           zombieX = zX;
+%           zombieY = zY + randi([-1;1],1);
+%         elseif obstacleGrid(zX,zY+1)==1
+%           zombieX = zX + randi([-1;1],1);
+%           zombieY = zY;
+%         end
+%       end
+%       newZombieGrid(zombie(1),zombie(2)) = 0;
+%       newZombieGrid(zombieX,zombieY) = 1;
+%       
+%   else
+%     newZombieGrid(zombie(1),zombie(2)) = 0;
+%     newZombieGrid(zombieX,zombieY) = 1;
+%   end   
 end
 end
 

@@ -11,7 +11,7 @@ function [newZombieGrid] = MoveZombies(humanGrid,zombieGrid,obstacleGrid,stepLen
   for i = 1 : length(zombieX)
     zombie = [zombieX(i),zombieY(i)];
     closestObstacles = FindClosestObstacle(zombie,obstacles);
-    target = ChooseTarget(zombie,humans,obstacleGrid,sightRadius);
+    target = ChooseTarget(zombie,humans,obstacleGrid,sightRadius,zombieGrid,humanGrid);
     %if target==[Inf Inf]
     %  break;
     %end

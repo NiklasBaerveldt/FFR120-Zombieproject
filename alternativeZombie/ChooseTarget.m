@@ -1,4 +1,4 @@
-function [target] = ChooseTarget(zombie,humans,obstaclegrid,sightRadius)
+function [target] = ChooseTarget(zombie,humans,obstaclegrid,sightRadius,zombieGrid,humanGrid)
 %   closestHumans = FindClosestHuman(zombie,humans,sightRadius);
 %   for i = 1:size(closestHumans,1)
 %       [bLineX,bLineY] = Bresenham(zombie(1),zombie(2),closestHumans(i,1),...
@@ -15,18 +15,34 @@ closestHumans = FindClosestHuman(zombie,humans,sightRadius);
 hasFoundTarget = 0;
 numberOfHumansInSight = size(closestHumans,1);
 i = 1;
+obstacleInTheWay = 0;
 target = [randi([0 50],1),randi([0 50],1)];
  while(hasFoundTarget == 0 && i <= numberOfHumansInSight)
+      obstacleInTheWay = 0;
       [bLineX,bLineY] = Bresenham(zombie(1),zombie(2),closestHumans(i,1),...
       closestHumans(i,2));
+       
   
-      if sum(sum(obstaclegrid(bLineX,bLineY)))==0
+      %code for VisualizeRay
+%       rayGrid = zeros(size(humanGrid,1));
+%       for ind = 1:length(bLineX)
+%         rayGrid(bLineX(ind),bLineY(ind)) = 1;
+%       end
+%       VisualizeRay(humanGrid,zombieGrid,obstaclegrid,rayGrid); 
+%uncomment to see ray. Comment VisualizePopulation in Main.m first though.
+      
+      
+      for ind = 1:length(bLineX)
+        if(obstaclegrid(bLineX(ind),bLineY(ind)) == 1)
+          obstacleInTheWay = 1;
+        end
+      end
+      if(obstacleInTheWay == 0)
           target=closestHumans(i,:);
           hasFoundTarget = 1;
       end
-      
       i = i + 1;
+ end
   
-  end
 end
 

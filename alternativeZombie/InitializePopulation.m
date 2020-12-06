@@ -18,8 +18,9 @@ function [humans,zombies,obstacles] = InitializePopulation(gridSize,nrOfHumans,n
 
   for i = 1:nrOfObstacles
     obstacles(obstacleXCoordinates(i),obstacleYCoordinates(i)) = 1;
-    x = randi([-1 1],1);
-    y = randi([-1 1],1);
+    r = randi([0 1],1);
+    x = randi([-1 1],1)*(1-r);
+    y = randi([-1 1],1)*r;
     for j = 1:obstacleSize
       if obstacleXCoordinates(i)+x<gridSize+1 && obstacleXCoordinates(i)+x>0 ...
       && obstacleYCoordinates(i)+y<gridSize+1 && obstacleYCoordinates(i)+y>0

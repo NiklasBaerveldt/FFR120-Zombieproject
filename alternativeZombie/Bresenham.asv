@@ -49,7 +49,5 @@ function [x,y]=Bresenham(x1,y1,x2,y2)
         error = error + deltaerr;
     end
   end
-%   diffx = x2 - x(end)
-%   diffy = y2 - y(end)
-%   diffxy = [diffx,diffy]
+  diff = x2 - x(end)
 end
