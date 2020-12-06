@@ -1,0 +1,24 @@
+function [outputArg1,outputArg2] = hasZombieNeighbour(x,y,zombieGrid)
+xStart = x - 1;
+if(xStart < 1)
+    xStart = 1;
+end
+xEnd = x + 1;
+if(xEnd > size(zombieGrid,1))
+    xEnd = size(zombieGrid,1);
+end
+
+yStart = y - 1;
+if(yStart < 1)
+    yStart = 1;
+end
+yEnd = y + 1;
+if(yEnd > size(zombieGrid,1))
+    yEnd = size(zombieGrid,1);
+end
+
+for i = xStart:xEnd
+    for j = yStart:yEnd
+        
+end
+

@@ -1,4 +1,4 @@
-function [newZombieGrid] = MoveZombie(zombieGrid,zombie,target,obstacle,obstacleGrid,stepLength)
+function [newZombieGrid] = MoveZombie(zombieGrid,zombie,target,obstacle,obstacleGrid,stepLength,humanGrid)
 newZombieGrid = zombieGrid;
   zombieX = zombie(1);
   zombieY = zombie(2);
@@ -9,7 +9,7 @@ if(target(1) == -1 && target(2) == -1)
       if(zombieX > 50 || zombieX < 1)
             zombieX = zX;
       end
-      if(obstacleGrid(zombieX,zombieY) == 1 || zombieGrid(zombieX,zombieY) == 1)
+      if(obstacleGrid(zombieX,zombieY) == 1 || zombieGrid(zombieX,zombieY) == 1 || humanGrid(zombieX,zombieY) == 1)
         zombieX = zX;
       end
       
@@ -17,7 +17,7 @@ if(target(1) == -1 && target(2) == -1)
       if(zombieY > 50 || zombieY < 1)
           zombieY = zY;
       end
-      if(obstacleGrid(zombieX,zombieY) == 1 || zombieGrid(zombieX,zombieY) == 1)
+      if(obstacleGrid(zombieX,zombieY) == 1 || zombieGrid(zombieX,zombieY) == 1 || humanGrid(zombieX,zombieY) == 1)
           zombieY = zY;
       end
 else
@@ -55,7 +55,7 @@ else
       if(zombieX > 50 || zombieX < 1)
             zombieX = zX;
       end
-      if(obstacleGrid(zombieX,zombieY) == 1 || zombieGrid(zombieX,zombieY) == 1)
+      if(obstacleGrid(zombieX,zombieY) == 1 || zombieGrid(zombieX,zombieY) == 1 || humanGrid(zombieX,zombieY) == 1)
         zombieX = zX;
       end
     %end
@@ -83,7 +83,7 @@ else
       if(zombieY > 50 || zombieY < 1)
           zombieY = zY;
       end
-      if(obstacleGrid(zombieX,zombieY) == 1 || zombieGrid(zombieX,zombieY) == 1)
+      if(obstacleGrid(zombieX,zombieY) == 1 || zombieGrid(zombieX,zombieY) == 1 || humanGrid(zombieX,zombieY) == 1)
           zombieY = zY;
       end
     %end

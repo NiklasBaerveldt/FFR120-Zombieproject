@@ -16,7 +16,7 @@ function [newZombieGrid] = MoveZombies(humanGrid,zombieGrid,obstacleGrid,stepLen
     %  break;
     %end
     for j = 1:stepLength
-    newZombieGrid = MoveZombie(newZombieGrid,zombie,target,closestObstacles,obstacleGrid,1);
+    newZombieGrid = MoveZombie(newZombieGrid,zombie,target,closestObstacles,obstacleGrid,1,humanGrid);
     end
   end
   
