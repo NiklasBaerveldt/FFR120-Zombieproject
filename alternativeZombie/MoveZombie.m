@@ -1,23 +1,39 @@
 function [newZombieGrid] = MoveZombie(zombieGrid,zombie,target,obstacle,obstacleGrid,stepLength)
 newZombieGrid = zombieGrid;
-if target ~= 0 % No human targets available.
+  zombieX = zombie(1);
+  zombieY = zombie(2);
+  zX = zombie(1);
+  zY = zombie(2);
+if(target(1) == -1 && target(2) == -1)
+      zombieX = zombieX + randi([-1 1],1);
+      if(zombieX > 50 || zombieX < 1)
+            zombieX = zX;
+      end
+      if(obstacleGrid(zombieX,zombieY) == 1 || zombieGrid(zombieX,zombieY) == 1)
+        zombieX = zX;
+      end
+      
+      zombieY = zombieY + randi([-1 1],1);
+      if(zombieY > 50 || zombieY < 1)
+          zombieY = zY;
+      end
+      if(obstacleGrid(zombieX,zombieY) == 1 || zombieGrid(zombieX,zombieY) == 1)
+          zombieY = zY;
+      end
+else
+%if target ~= 0 % No human targets available.
 
   obstacleDistanceX = abs(zombie(1)-obstacle(1));
   obstacleDistanceY = abs(zombie(2)-obstacle(2));
     
   distanceX = abs(zombie(1) - target(1));
   distanceY = abs(zombie(2) - target(2));
-  zombieX = zombie(1);
-  zombieY = zombie(2);
-  zX = zombie(1);
-  zY = zombie(2);
   
   %if obstacleDistanceX>0
   %  if stepLength>=obstacleDistanceX
   %    zombieX = 
   %  else
   %    zombieX = zombieX + sign(
-  
   if distanceX > 0
     %if obstacleDistanceX >distanceX
       if stepLength >= distanceX
@@ -36,8 +52,11 @@ if target ~= 0 % No human targets available.
         end
         %}
       end
-      if(obstacleGrid(zombieX,zombieY) == 1)
-          zombieX = zX;
+      if(zombieX > 50 || zombieX < 1)
+            zombieX = zX;
+      end
+      if(obstacleGrid(zombieX,zombieY) == 1 || zombieGrid(zombieX,zombieY) == 1)
+        zombieX = zX;
       end
     %end
   end
@@ -61,13 +80,15 @@ if target ~= 0 % No human targets available.
         end
         %}
       end
-      if(obstacleGrid(zombieX,zombieY) == 1)
+      if(zombieY > 50 || zombieY < 1)
+          zombieY = zY;
+      end
+      if(obstacleGrid(zombieX,zombieY) == 1 || zombieGrid(zombieX,zombieY) == 1)
           zombieY = zY;
       end
     %end
   end
-newZombieGrid(zombie(1),zombie(2)) = 0;
-newZombieGrid(zombieX,zombieY) = 1;
+
   
 %   if obstacleGrid(zombieX,zombieY) == 1
 %       if obstacleGrid(zX,zombieY) == 1
@@ -101,5 +122,7 @@ newZombieGrid(zombieX,zombieY) = 1;
 %     newZombieGrid(zombieX,zombieY) = 1;
 %   end   
 end
+newZombieGrid(zombie(1),zombie(2)) = 0;
+newZombieGrid(zombieX,zombieY) = 1;
 end
 

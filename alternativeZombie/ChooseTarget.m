@@ -17,6 +17,7 @@ numberOfHumansInSight = size(closestHumans,1);
 i = 1;
 obstacleInTheWay = 0;
 target = [randi([0 50],1),randi([0 50],1)];
+target = [-1,-1];
  while(hasFoundTarget == 0 && i <= numberOfHumansInSight)
       obstacleInTheWay = 0;
       [bLineX,bLineY] = Bresenham(zombie(1),zombie(2),closestHumans(i,1),...

@@ -17,7 +17,11 @@ if target ~= 0 % No human targets available.
   %    zombieX = 
   %  else
   %    zombieX = zombieX + sign(
-  
+  if(target(1) == -1 && target(2) == -1)
+      zombieX = zombieX + randi([-1 1],1);
+      zombieY = zombieY + randi([-1 1],1);
+  end
+else
   if distanceX > 0
     %if obstacleDistanceX >distanceX
       if stepLength >= distanceX
@@ -36,8 +40,11 @@ if target ~= 0 % No human targets available.
         end
         %}
       end
+      if(zombieX > 50 || zombieX < 1)
+            zombieX = zX;
+      end
       if(obstacleGrid(zombieX,zombieY) == 1 || zombieGrid(zombieX,zombieY) == 1)
-          zombieX = zX;
+        zombieX = zX;
       end
     %end
   end
@@ -61,7 +68,10 @@ if target ~= 0 % No human targets available.
         end
         %}
       end
-      if(obstacleGrid(zombieX,zombieY) == 1)
+      if(zombieY > 50 || zombieY < 1)
+          zombieY = zY;
+      end
+      if(obstacleGrid(zombieX,zombieY) == 1 || zombieGrid(zombieX,zombieY) == 1)
           zombieY = zY;
       end
     %end

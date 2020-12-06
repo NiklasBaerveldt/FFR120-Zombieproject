@@ -1,6 +1,6 @@
 clc; clear;
 gridSize = 50;
-nrOfHumans = 40;
+nrOfHumans = 20;
 nrOfZombies = 1;
 nrOfObstacles = 10;
 stopTime = 500;
@@ -8,7 +8,7 @@ XEdge = stopTime;
 YEdge = nrOfHumans;
 zombieStepLength = 1;
 %humanStepLength = 2;
-zombieSightRadius = 100;
+zombieSightRadius = 10;
 humanSightRadius = 20;
 nrHumansOverTime = zeros(1,stopTime);
 nrZombiesOverTime = zeros(1,stopTime);
@@ -29,19 +29,19 @@ while sum(sum(humans==1)) > 0
   nrHumansOverTime(time) = sum(sum(humans));
   nrZombiesOverTime(time) = sum(sum(zombies));
     
-%   set(0,'CurrentFigure',figure2);
-%   cla
-%   hold on
-%   %axis([0,XEdge,0,YEdge])
-%   plot(nrHumansOverTime(1:time),'b-')
-%   plot(nrZombiesOverTime(1:time),'r-') %uncomment this to see
-%   %dissappearing zombie phenomenom
-%       
-%   %Cheatcode for demonstration:
-%   %plot(50-nrHumansOverTime(1:time),'r-')
-%   hold off
-%   drawnow update
-%   time = time + 1;
+  set(0,'CurrentFigure',figure2);
+  cla
+  hold on
+  %axis([0,XEdge,0,YEdge])
+  plot(nrHumansOverTime(1:time),'b-')
+  plot(nrZombiesOverTime(1:time),'r-') %uncomment this to see
+  %dissappearing zombie phenomenom
+      
+  %Cheatcode for demonstration:
+  %plot(50-nrHumansOverTime(1:time),'r-')
+  hold off
+  drawnow update
+  time = time + 1;
 end
 
 %zombies
