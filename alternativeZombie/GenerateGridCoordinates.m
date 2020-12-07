@@ -16,4 +16,3 @@ function [xCoordinates,yCoordinates,areaGrid] = GenerateGridCoordinates(gridSize
     areaGrid(xCoordinates(k),yCoordinates(k))=1;
   end
 end
-

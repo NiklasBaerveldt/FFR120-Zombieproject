@@ -21,7 +21,8 @@ function [] = VisualizePopulation(humans,zombies,obstacles)
   
   imagesc(creatures);
   colormap(map);
-  pause(0.1);
+  pause(1);
   
 end
+
 

@@ -27,3 +27,4 @@ function [newHumanGrid,newZombieGrid] = InfectHumans(humans,zombies)
   
 end
 
+

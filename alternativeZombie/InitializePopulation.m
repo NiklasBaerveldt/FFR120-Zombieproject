@@ -34,4 +34,3 @@ function [humans,zombies,obstacles] = InitializePopulation(gridSize,nrOfHumans,n
   end
  
 end
-

@@ -1,14 +1,14 @@
-function [closestObstacles] = FindClosestObstacle(zombie,obstacles)
+function [closestObstacle] = FindClosestObstacle(human,obstacles)
+[obstacleX,obstacleY] = find(obstacles ==1);
 
-  nrOfObstacles = size(obstacles,1);
-  shortestDistance = Inf;
-  closestObstacles = [];
-  for i = 1:nrOfObstacles
-    distance = DistanceBetweenPoints(zombie,obstacles(i,:));
-    if distance<shortestDistance
-      shortestDistance = distance;
-      closestObstacles(i,:) = obstacles(i,:);
-    end  
-  end
-  
+nrOfObstacles = length(obstacleX);
+shortestDistance = Inf;
+closestObstacle = 0;
+for i = 1 : nrOfObstacles
+    distance = DistanceBetweenPoints(human,[obstacleX(i),obstacleY(i)]);
+    if  distance < shortestDistance
+        shortestDistance = distance;
+        closestObstacle = [obstacleX(i),obstacleY(i)];
+    end
+end
 end

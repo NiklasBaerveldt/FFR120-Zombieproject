@@ -21,4 +21,3 @@ function [newZombieGrid] = MoveZombies(humanGrid,zombieGrid,obstacleGrid,stepLen
   end
   
 end
-
