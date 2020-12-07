@@ -6,7 +6,8 @@ newZombieGrid = zombieGrid;
   zY = zombie(2);
 if(target(1) == -1 && target(2) == -1)
       zombieX = zombieX + randi([-1 1],1);
-      if(zombieX > 50 || zombieX < 1)
+      gridSize = size(humanGrid,1);
+      if(zombieX > gridSize || zombieX < 1)
             zombieX = zX;
       end
       if(obstacleGrid(zombieX,zombieY) == 1 || zombieGrid(zombieX,zombieY) == 1 || humanGrid(zombieX,zombieY) == 1)
@@ -14,7 +15,7 @@ if(target(1) == -1 && target(2) == -1)
       end
       
       zombieY = zombieY + randi([-1 1],1);
-      if(zombieY > 50 || zombieY < 1)
+      if(zombieY > gridSize || zombieY < 1)
           zombieY = zY;
       end
       if(obstacleGrid(zombieX,zombieY) == 1 || zombieGrid(zombieX,zombieY) == 1 || humanGrid(zombieX,zombieY) == 1)
@@ -23,8 +24,8 @@ if(target(1) == -1 && target(2) == -1)
 else
 %if target ~= 0 % No human targets available.
 
-  obstacleDistanceX = abs(zombie(1)-obstacle(1));
-  obstacleDistanceY = abs(zombie(2)-obstacle(2));
+%   obstacleDistanceX = abs(zombie(1)-obstacle(1));
+%   obstacleDistanceY = abs(zombie(2)-obstacle(2));
     
   distanceX = abs(zombie(1) - target(1));
   distanceY = abs(zombie(2) - target(2));

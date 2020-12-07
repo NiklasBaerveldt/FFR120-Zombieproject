@@ -1,4 +1,4 @@
-function [x,y]=Bresenham(x1,y1,x2,y2)
+function [x,y]=Bresenham(x1,y1,x2,y2,gridSize)
 
   dx = x2-x1;
   dy = y2-y1;
@@ -18,8 +18,8 @@ function [x,y]=Bresenham(x1,y1,x2,y2)
         error = error - 1;
       end
       i = i + sign(dx);
-      if(j > 50)
-          j = 50;
+      if(j > gridSize)
+          j = gridSize;
       end
       if(j < 1)
           j = 1;
@@ -40,8 +40,8 @@ function [x,y]=Bresenham(x1,y1,x2,y2)
         error = error - 1;
       end
         i = i + sign(dy);
-        if(j > 50)
-          j = 50;
+        if(j > gridSize)
+          j = gridSize;
       end
       if(j < 1)
           j = 1;

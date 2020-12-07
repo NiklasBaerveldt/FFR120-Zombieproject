@@ -7,7 +7,7 @@ isInSight = false;
  while(hasFoundTarget == 0 && i <= nrOfZombies)
       obstacleInTheWay = 0;
       [bLineX,bLineY] = Bresenham(human(1),human(2),zombies(i,1),...
-      zombies(i,2));
+      zombies(i,2),size(obstacles,1));
        
   
       %code for VisualizeRay
