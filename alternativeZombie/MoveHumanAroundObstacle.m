@@ -1,5 +1,4 @@
 function [newHumanGrid] = MoveHumanAroundObstacle(human,humans,obstacles,zombies,closestZombie)
-closestZombie
 newHumanGrid = humans;
 gridSize = size(humans,1);
 possibleNewPositions = GetNeighbourTiles(human,gridSize);
@@ -10,7 +9,9 @@ for i = 1 : nrOfPossiblePositions
      x = possibleNewPositions(orderOfPossiblePositions(i),1);
      y = possibleNewPositions(orderOfPossiblePositions(i),2);
      if humans(x,y) ~= 1 && obstacles(x,y) ~= 1 && zombies(x,y) ~= 1 && HumanIsAtObstacle([x,y],obstacles) 
-         if ~ZombieIsInSight([x,y],zombies,obstacles)
+         [zombieX,zombieY] = find(zombies == 1);
+         zombiesCoordinates = [zombieX,zombieY];
+         if ~ZombieIsInSight([x,y],zombiesCoordinates,obstacles)
          newHumanGrid(human(1),human(2)) = 0;
          newHumanGrid(x,y) = 1;
          changedPos = true;
@@ -26,7 +27,7 @@ for i = 1 : nrOfPossiblePositions
      for i = 1 : nrOfPossiblePositions
          x = possibleNewPositions(i,1);
          y = possibleNewPositions(i,2);
-         if newHumanGrid(x,y) ~= 1 && obstacles(x,y) ~= 1 && zombies(x,y) ~= 1 %&& HumanIsAtObstacle([x,y],obstacles)
+         if newHumanGrid(x,y) ~= 1 && obstacles(x,y) ~= 1 && zombies(x,y) ~= 1 && HumanIsAtObstacle([x,y],obstacles)
              distance = DistanceBetweenPoints([x,y],closestZombie);
              if distance > maxDistance
                  maxDistance = distance;
