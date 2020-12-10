@@ -1,4 +1,6 @@
 function [closestZombie] = FindClosestZombie(human,zombies,sightRange)
+[zombiesX,zombiesY] = find(zombies == 1);
+zombies = [zombiesX,zombiesY];
 nrOfZombies = size(zombies(:,1));
 shortestDistance = Inf;
 closestZombie = 0;
