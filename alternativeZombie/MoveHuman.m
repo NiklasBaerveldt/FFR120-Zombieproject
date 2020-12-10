@@ -1,12 +1,14 @@
 function [newHumanGrid] = MoveHuman(humans,obstacles,zombies,human,sightRange)
 newHumanGrid = humans;
+[zombieX, zombieY] = find(zombies == 1);
+zombieCoordinates = [zombieX, zombieY];
 if HumanIsAtObstacle(human,obstacles)
-    zombiesInSightRadius = FindZombiesInSightRadius(human,zombies,sightRange); 
+    zombiesInSightRadius = FindClosestEnemy(human,zombieCoordinates,sightRange); 
     if ZombieIsInSight(human,zombiesInSightRadius,obstacles)
        newHumanGrid = MoveHumanAroundObstacle(human,humans,obstacles,zombies); 
     end
 else
-    closestObstacle = FindClosestObstacle(human,obstacles)
+    closestObstacle = FindClosestObstacle(human,obstacles);
     if closestObstacle(1) ~= 0 && closestObstacle(2) ~= 0
     newHumanGrid = MoveHumanTowardsObstacle(zombies,humans,obstacles,human,closestObstacle);
     else

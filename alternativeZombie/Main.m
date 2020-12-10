@@ -1,11 +1,11 @@
 clc; clear;
-gridSize = 20;
+gridSize = 50;
 nrOfHumans = 5;
 nrOfZombies = 1;
-nrOfObstacles = 4;
+nrOfObstacles = 10;
 zombieStepLength = 1;
 %humanStepLength = 2;
-sightRange = 2;
+sightRange = 20;
 [humans,zombies,obstacles] = InitializePopulation(gridSize,nrOfHumans,nrOfZombies,nrOfObstacles);
 timePeriod = 1 : 500;
 

@@ -4,6 +4,7 @@ hasFoundTarget = 0;
 i = 1;
 obstacleInTheWay = 0;
 isInSight = false;
+if(size(zombies,2) ~= 1)
  while(hasFoundTarget == 0 && i <= nrOfZombies)
       obstacleInTheWay = 0;
       [bLineX,bLineY] = Bresenham(human(1),human(2),zombies(i,1),...
@@ -30,5 +31,6 @@ isInSight = false;
       end
       i = i + 1;
  end
+end
 end
 
